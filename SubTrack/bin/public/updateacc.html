@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="SubTrek">
+    <head>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/SubTrek.js"></script>
+        <title>Update Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/SubTrack.css">
+    </head>
+    
+    <body>
+        
+         <h1> My Account </h1>
+         <div align="center" ng-include="'menu.html'"></div>
+         <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.updateCustomer(customer)" class="login-form">
+            <center>
+            
+             <input type="hidden" ng-model="custCtrl.customer.customerId" required>
+            <label for=“username”>Username:</label>
+            <label>{{custCtrl.customer.username}}</label>
+            <br>
+            
+            <label for=“firstName”>First Name:</label>
+            <label>{{custCtrl.customer.firstName}}</label>
+            <br>
+            
+            <label for=“lastName”>Last Name:</label>
+            <label>{{custCtrl.customer.lastName}}</label>
+            <br>
+            
+            <label for=“phoneNumber”>Phone:</label>
+            <label>{{custCtrl.customer.phoneNumber}}</label>
+            <br>
+            <label for=“emailAddress”>Email:</label>
+            <label>{{custCtrl.customer.emailAddress}}</label>
+            <br>
+            <br>
+            
+            <!--<button type="submit">Update Account</button></center>--> 
+            {{custCtrl.updateMessage}}
+         </center>
+            
+            <br>
+            <!--<center><button class="delete" type="submit" ng-click="custCtrl.deleteCustomer(custCtrl.customer)">Delete Account</button></center>-->
+        </form>
+         
+         
+        
+    </body>
+</html>

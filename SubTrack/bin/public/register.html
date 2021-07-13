@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="SubTrek">
+    <head>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/SubTrek.js"></script>
+        <title>Create Account</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/SubTrack.css">
+    </head>
+    
+    <body>
+        
+         <h1> Create Account </h1>
+         <div align="center" ng-include="'menu.html'"></div>
+         <hr>
+         <form ng-controller="CustomerController as custCtrl" ng-submit="custCtrl.registerCustomer(customer)"  class="login-form">
+            <label for=“username”>Username:</label>
+            <input type="text" ng-model="customer.username" required>
+            <br>
+            
+            <label for=“firstName”>First Name:</label>
+            <input type="text" ng-model="customer.firstName" required>
+            <br>
+            
+            <label for=“lastName”>Last Name:</label>
+            <input type="text" ng-model="customer.lastName" required>
+            <br>
+            
+            <label for=“password”>Password:</label>
+            <input type="password" ng-model="customer.password" required>
+            <br>
+            
+            <label for=“phoneNumber”>Phone</label>
+            <input type="text" ng-model="customer.phoneNumber" required>
+            <br>
+            
+            <label for=“emailAddress”>Email:</label>
+            <input type="email" ng-model="customer.emailAddress" required>
+            <br><br>
+           
+            
+            
+            <center><button type="submit" class="raise">Create Account</button></center>
+        </form>
+    </center>
+    </body>
+</html>
+
+

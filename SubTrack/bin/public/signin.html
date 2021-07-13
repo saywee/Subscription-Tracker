@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="SubTrek">
+    <head>
+        <title>Sign In</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/SubTrack.css">
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/SubTrek.js"></script>
+    </head>
+    <body ng-controller="CustomerController as custCtrl">
+
+        <div>
+            <h1>Sign In</h1>
+        </div>
+        <div align="center" ng-include="'menu.html'">
+            
+        </div>
+        <hr>
+        <div class="login-form">
+            <!--<p>{{custCtrl.signInMessage}}</p>-->
+            <center>
+            <form ng-submit="custCtrl.signIn(username, password)" class='form'>
+                <fieldset>
+                    <legend align='left'>Account Details</legend>
+                    <label for='uname'>Username:</label>
+                    <input type="text" ng-model="username" required>
+                    <br><br>
+                    <label for='pword'>Password:</label>
+                    <input type="password" ng-model="password" required>
+                    <br><br>
+                    <center><button type='submit' class="raise">Sign In</button></center>
+                </fieldset>
+            </form>
+            </center>
+            <center><h4>Don't have an account? <a href=register.html>Create one!</a></h4></center>
+        </div>
+    </body>
+</html>
