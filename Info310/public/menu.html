@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<link rel="stylesheet" href="css/SubTrack.css">
+<div class="dropdown" id="menu" ng-controller="CustomerController as custCtrl" ng-init="custCtrl.checkSignIn()">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+        <a href="home.html">Home</a>
+        <a href="updateacc.html" ng-if="custCtrl.signedIn">My Account</a>
+        <a href="home.html" ng-if="custCtrl.signedIn" ng-click="custCtrl.signOut()">Sign Out</a>
+        <a href="signin.html" ng-if="!custCtrl.signedIn">Sign In</a>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="SubTrek">
+    <head>
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/SubTrek.js"></script>
+        <title>Update Subscription</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/SubTrack.css">
+    </head>
+    <body>
+        <h1> Update Subscription </h1>
+        <div ng-include="'menu.html'" align="center"></div>
+        <hr>
+        
+        <form ng-controller="SubscriptionController as subCtrl" ng-submit="subCtrl.updateSubscription(subCtrl.subscription)" class="login-form">
+          <input type="hidden" ng-model="subCtrl.subscription.subscriptionId" required>
+            <label for=“name”>Name:</label>
+            <input type="text" ng-model="subCtrl.subscription.name" required>
+            <br>
+            
+            <label for=“category”>Category:</label>
+            <input type="text" ng-model="subCtrl.subscription.category" required>
+            <br>
+            
+            <label for=“subscriptionPrice”>Price:</label>
+            <input type="text" ng-model="subCtrl.subscription.subscriptionPrice" required>
+            <br>
+            
+            <label for=“description”>Description:</label>
+            <input type="text" ng-model="subCtrl.subscription.description" required>
+            <br>
+            
+            <label for=“companyName”>Company:</label>
+            <input type="text" ng-model="subCtrl.subscription.companyName" required>
+            <br>
+          
+            <label for=“dueDate”>Due Date:</label>
+            <input type="date" ng-model="subCtrl.subscription.dueDate" name="trip-start"
+                   min="2021-01-01" max="2021-12-31">
+            <br><br>
+
+
+
+            <button type="submit" class="raise">Update Subscription</button>
+           <!-- <a href="home.html"><button class=".button">Update Subscription</button></a> -->
+        </form>
+    </body>
+</html>

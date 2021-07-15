@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html ng-app="SubTrek">
+    <head>
+        <title>SubTrek</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/angular.js"></script>
+        <script src="js/angular-resource.js"></script>
+        <script src="js/ngStorage.js"></script>
+        <script src="js/SubTrek.js"></script>
+        <!--<link rel="stylesheet" href="css/style.css">-->
+        <link rel="stylesheet" href="css/SubTrack.css">
+    </head>
+    <body ng-controller="CustomerController as custCtrl" ng-init="custCtrl.checkSignIn()">
+        <h1>SubTrek</h1>
+        <div id='welcome' align="center" class=""><h3>{{custCtrl.welcome}}</h3></div>
+        <div align="center" ng-include="'menu.html'"></div>
+        <hr>
+        <div align="center" >
+        <a href="subscription.html" ng-if="custCtrl.signedIn"><button class="butgreen up">Add Subscription</button></a>
+        </div>
+        <div ng-controller="SubscriptionController as subCtrl" ng-if="custCtrl.signedIn">
+            <button class="raise" ng-click="subCtrl.selectAll()">All</button>
+            <button class="raise" type="button" class="pink-button" data-ng-repeat="category in subCtrl.categories" 
+                    ng-click="subCtrl.filterCat(category)">{{category}}</button>
+            <table>
+            
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Company</th>
+                    <th>Due Date</th>
+                    <th></th>
+                </tr>
+            
+            <tbody>
+                <tr data-ng-repeat="subscription in subCtrl.subscriptions">
+                    <td>{{subscription.name}}</td>
+                    <td>{{subscription.description}}</td>
+                    <td>{{subscription.paid ? (subscription.subscriptionPrice | currency) : 'Free' }}</td>
+                    <td>{{subscription.companyName}}</td>
+                    <td ng-attr-id="{{ 'sub-' + subscription.subscriptionId }}">{{subCtrl.getConvertedDate(subscription.dueDate)}} 
+                        {{subCtrl.getSubscriptionStatus(subscription)}}
+                        <button class="raise" ng-attr-id="{{ 'renew-' + subscription.subscriptionId }}" ng-click="subCtrl.renewSubscription(subscription)">Renew</button>
+                    </td>
+                        <!--(in {{subCtrl.daysToToday(subscription.dueDate)}} day{{subCtrl.daysToToday(subscription.dueDate) > 1 ? 's' : ''}})
+                    </td>-->
+                    <td>
+                        <div>
+                            <button class="raise" ng-click="subCtrl.update(subscription)">Update</button>
+                        </div>
+                        <br>
+                        <div>
+                            <button class="del" ng-click="subCtrl.deleteSubscription(subscription)">Delete   </button>
+                        </div>
+                    </td>
+                        
+                </tr>
+                <tr >
+                    <td></td>
+                    <td>Total</td>
+                    <td>{{subCtrl.total.value | currency}}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
